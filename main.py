@@ -2,16 +2,13 @@ import requests
 import json
 import conf
 
-print(conf.usuario)
-print(conf.clave)
-
 url = "https://sandboxapicdc.cisco.com/api/aaaLogin.json"
 
 data = {
     "aaaUser" : {
         "attributes" : {
-            "name" : "usuario",
-            "pwd" : "clave"
+            "name" : "admin",
+            "pwd" : "!v3G@!4@Y"
         }
     }
 }
@@ -28,15 +25,17 @@ print("***************************************")
 print("API-Token :"+API_Token)
 print("***************************************")
 
+
+
 # pedir TopSystem
 
-url1 = "https://sandboxapicdc.cisco.com/api/class/topSystem.json"
-header = {
-        'content-type': "application/json",
-}
-API_Cookie = {
-    "APIC-Cookie" : pedir_token()
-}
+#url1 = "https://sandboxapicdc.cisco.com/api/class/topSystem.json"
+#header = {
+#        'content-type': "application/json",
+#}
+#API_Cookie = {
+#    "APIC-Cookie" : pedir_token()
+#}
 
-respuesta1 = requests.get(url1, headers=header, cookies=API_Cookie,verify=False)
-print(respuesta1.json())
+#respuesta1 = requests.get(url1, headers=header, cookies=API_Cookie,verify=False)
+#print(respuesta1.json())
