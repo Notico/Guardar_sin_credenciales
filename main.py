@@ -2,6 +2,8 @@ import requests
 import json
 import conf
 
+print(conf.clave)
+print(conf.usuario)
 url = "https://sandboxapicdc.cisco.com/api/aaaLogin.json"
 
 data = {
