@@ -24,9 +24,7 @@ def pedir_token(usuario, clave):
     return Token
 Token = pedir_token(conf.usuario, conf.clave)
 
-#print("*********************************************************************************************************************")
 print("API-Token :" + Token)
-#print("*********************************************************************************************************************")
 
 #pedir TopSystem
 
@@ -39,8 +37,7 @@ API_Cookie = {
 }
 
 respuesta1 = requests.get(url1, headers=header, cookies=API_Cookie,verify=False)
-print(respuesta1.json())
-
+#print(respuesta1.json())
 
 #for i in range (0,4): # cuando es un numero fijo
 #     IP_LOCAL = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["address"]
@@ -52,4 +49,17 @@ for i in range (0,int(respuesta1.json()["totalCount"])): # cuando es un numero v
     IP_LOCAL = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["address"]
     MAC_LOCAL = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["fabricMAC"]
     Estado_nodo = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["state"]
-    print("IP : "+IP_LOCAL+ " / "+ " MAC : "+ MAC_LOCAL+ " / "+ "Estado : " +Estado_nodo )
+    Tiempo = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["systemUpTime"]
+
+    print("IP : "+IP_LOCAL+ " / "+ " MAC : "+ MAC_LOCAL+ " / "+ "Estado : " +Estado_nodo+ " / "+ "Uptime : " +Tiempo  )
+
+
+url2 = "https://sandboxapicdc.cisco.com/api/mo/topology/pod-1/node-1/sys/ch/bslot/board/sensor-3.json"
+header2 = {
+        'content-type': "application/json",
+}
+API_Cookie = {
+    "APIC-Cookie" : pedir_token(conf.usuario,conf.clave)
+}
+respuesta2 = requests.get(url2, headers=header2, cookies=API_Cookie,verify=False)
+print(respuesta2.json())
