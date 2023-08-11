@@ -2,15 +2,13 @@ import requests
 import json
 import conf
 
-print(conf.clave)
-print(conf.usuario)
 url = "https://sandboxapicdc.cisco.com/api/aaaLogin.json"
 
 data = {
     "aaaUser" : {
         "attributes" : {
-            "name" : "admin",
-            "pwd" : "!v3G@!4@Y"
+            "name" : conf.usuario,
+            "pwd" : conf.clave
         }
     }
 }
