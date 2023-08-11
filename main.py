@@ -40,10 +40,7 @@ respuesta1 = requests.get(url1, headers=header, cookies=API_Cookie,verify=False)
 #print(respuesta1.json())
 
 #for i in range (0,4): # cuando es un numero fijo
-#     IP_LOCAL = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["address"]
-#     MAC_LOCAL = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["fabricMAC"]
-#     Estado_nodo = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["state"]
-#     print("IP : "+IP_LOCAL+ " / "+ " MAC : "+ MAC_LOCAL+ " / "+ "Estado : " +Estado_nodo )
+
 print("********************************************************************************************************************************************************************")
 for i in range (0,int(respuesta1.json()["totalCount"])): # cuando es un numero variable
     IP_LOCAL = respuesta1.json()["imdata"][i]["topSystem"]["attributes"]["address"]
