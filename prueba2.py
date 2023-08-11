@@ -25,16 +25,17 @@ def pedir_token(usuario, clave):
     return Token
 Token = pedir_token(conf.usuario, conf.clave)
 
-print("API-Token :" + Token)
+#print("API-Token :" + Token)
 
 
-url2 = "https://sandboxapicdc.cisco.com//api/changeSelfSshKey.json"
+url2 = "https://sandboxapicdc.cisco.com/api/changeSelfSshKey.json"
 
 data2 = {
-    "aaaUser": {
+    "aaaChangeSshKey": {
         "attributes": {
-            "name": "",
-            "pwd": ""
+            "userName": conf.usuario,
+            "name": "A",
+            "data": ""
         }
     }
 }
@@ -45,5 +46,6 @@ header2 = {
 API_Cookie = {
    "APIC-Cookie" : pedir_token(conf.usuario,conf.clave)
 }
-respuesta2 = requests.get(url2, data2= json.dumps(data2), headers=header2, cookies=API_Cookie,verify=False)
+respuesta2 = requests.post(url2, data= json.dumps(data2), headers=header2, cookies=API_Cookie,verify=False)
 print(respuesta2.json())
+print(respuesta2)
